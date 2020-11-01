@@ -1,0 +1,35 @@
+server:
+  port: 8085
+
+
+spring:
+  jpa:
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+
+  application:
+    name: sum-server
+
+  #数据库相关配置
+  data:
+    jpa:
+      repositories:
+        enabled: false
+      show-sql: true
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/flow?useSSL=false&autoReconnect=true&autoReconnectForPools=true&useUnicode=true&characterEncoding=utf8    #【主数据库的访问地址】
+    username: root
+    password: 123456
+    hikari:
+      read-only: false
+      minimum-idle: 10
+      connection-test-query: SELECT 1 from dual
+      maximum-pool-size: 600
+      max-lifetime: 60000
+      login-timeout: 5
+      validation-timeout: 3000
+      connection-timeout: 60000
+      idle-timeout: 60000
